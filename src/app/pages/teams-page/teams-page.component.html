@@ -1,0 +1,79 @@
+<div class="teams-container">
+
+  <h2>NBA Teams — {{ season }}</h2>
+
+  <select [ngModel]="season" (ngModelChange)="onSeasonChange($event)" class="season-select">
+    <option *ngFor="let s of seasons" [value]="s">
+      {{ s - 1 }}–{{ ('' + s).slice(-2) }}
+    </option>
+  </select>
+
+  <div class="table-wrapper">
+    <table class="teams-table">
+      <thead>
+      <tr>
+        <th>Abbr</th>
+        <th>Team</th>
+        <th>PO</th>
+        <th>W</th>
+        <th>L</th>
+        <th>PW</th>
+        <th>PL</th>
+        <th>MOV</th>
+        <th>SOS</th>
+        <th>SRS</th>
+        <th>ORtg</th>
+        <th>DRtg</th>
+        <th>NRtg</th>
+        <th>PACE</th>
+        <th>FTr</th>
+        <th>3PAr</th>
+        <th>TS%</th>
+        <th>eFG%</th>
+        <th>TOV%</th>
+        <th>ORB%</th>
+        <th>FT/FGA</th>
+        <th>Opp eFG%</th>
+        <th>Opp TOV%</th>
+        <th>Opp DRB%</th>
+        <th>Opp FT/FGA</th>
+        <th>Arena</th>
+        <th>Attend</th>
+        <th>Att/G</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let t of teams">
+        <td>{{ t.abbreviation }}</td>
+        <td>{{ t.team }}</td>
+        <td>{{ t.playoffs ? 'Y' : 'N' }}</td>
+        <td>{{ t.w }}</td>
+        <td>{{ t.l }}</td>
+        <td>{{ t.pw }}</td>
+        <td>{{ t.pl }}</td>
+        <td>{{ t.mov | number:'1.1-1' }}</td>
+        <td>{{ t.sos | number:'1.1-1' }}</td>
+        <td>{{ t.srs | number:'1.1-1' }}</td>
+        <td>{{ t.ortg | number:'1.1-1' }}</td>
+        <td>{{ t.drtg | number:'1.1-1' }}</td>
+        <td>{{ t.nrtg | number:'1.1-1' }}</td>
+        <td>{{ t.pace | number:'1.1-1' }}</td>
+        <td>{{ t.ftr | number:'1.2-2' }}</td>
+        <td>{{ t.x3pAr | number:'1.2-2' }}</td>
+        <td>{{ t.tsPercent | percent:'1.1-1' }}</td>
+        <td>{{ t.eFgPercent | percent:'1.1-1' }}</td>
+        <td>{{ t.tovPercent | number:'1.1-1' }}%</td>
+        <td>{{ t.orbPercent | number:'1.1-1' }}%</td>
+        <td>{{ t.ftFga | number:'1.2-2' }}</td>
+        <td>{{ t.oppEFgPercent | percent:'1.1-1' }}</td>
+        <td>{{ t.oppTovPercent | number:'1.1-1' }}%</td>
+        <td>{{ t.oppDrbPercent | number:'1.1-1' }}%</td>
+        <td>{{ t.oppFtFga | number:'1.2-2' }}</td>
+        <td>{{ t.arena }}</td>
+        <td>{{ t.attend }}</td>
+        <td>{{ t.attendG }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

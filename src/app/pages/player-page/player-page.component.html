@@ -1,0 +1,41 @@
+<div class="player-page-outer-container">
+<div class="player-details-container">
+  <h1 class="page-title">NBA Player Stats</h1>
+
+  <div *ngIf="playerDisplayName; else noPlayerSelected">
+    <h2 class="player-name-heading">{{ playerDisplayName }}</h2>
+
+    <div *ngIf="playerSeasons.length > 0; else noDataFound" class="stats-table-wrapper">
+      <table class="player-stats-table">
+        <thead>
+        <tr>
+          <th *ngFor="let header of tableHeaders">{{ header.label }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let season of playerSeasons">
+          <td *ngFor="let header of tableHeaders">
+            {{ getStatValue(season, header.key) }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <p class="data-source">Stats from Basketball-Reference.com</p>
+    </div>
+    <ng-template #noDataFound>
+      <div class="message-card">
+        <p>No statistical data found for {{ playerDisplayName }} in our records.</p>
+        <p>Try searching for another player or a specific season if applicable.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-template #noPlayerSelected>
+    <div class="message-card no-player-selected">
+      <p>Select a player from the global search bar above to view their career statistics.</p>
+      <p>Example: "LeBron James", "Stephen Curry", "Nikola Jokic"</p>
+    </div>
+  </ng-template>
+
+</div>
+</div>

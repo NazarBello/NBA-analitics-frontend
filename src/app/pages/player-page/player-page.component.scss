@@ -1,0 +1,190 @@
+/* Outer container to center the main content on the page */
+.player-page-outer-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align to the top */
+  padding: 20px; /* Padding around the content */
+  min-height: calc(100vh - 80px); /* Adjust for header if it's fixed */
+  box-sizing: border-box;
+}
+
+/* Main container for the player details */
+.player-details-container {
+  background: #14181a; /* Dark background from your standings-card */
+  color: #e6edf3; /* Light text for general content */
+  border-radius: 12px; /* Rounded corners from your cards */
+  padding: 1.5rem; /* Consistent padding */
+  width: 100%;
+  max-width: 1200px; /* Increased max-width for the table */
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Page Title */
+.page-title {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #00d8ff;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+  border-bottom: 2px solid #2c3136;
+}
+
+.player-name-heading {
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+/* Wrapper for the table to enable horizontal scrolling */
+.stats-table-wrapper {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smoother scrolling on touch devices */
+  margin-bottom: 1rem;
+}
+
+/* Player Stats Table */
+.player-stats-table {
+  width: 100%; /* Make table take full width of its container */
+  border-collapse: separate; /* Allows for border-radius on cells */
+  border-spacing: 0; /* Remove space between cells */
+  min-width: 900px; /* Ensure table doesn't get too squished on smaller screens */
+  background: #1f2428; /* Slightly lighter dark background for table */
+  border: 1px solid #2c3136;
+  border-radius: 8px; /* Apply border-radius to the table itself */
+  overflow: hidden; /* Ensures content respects border-radius */
+}
+
+.player-stats-table thead {
+  background: #2c3136; /* Darker background for header row */
+}
+
+.player-stats-table th {
+  color: #00d8ff; /* Bright cyan for header text */
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap; /* Prevent headers from wrapping */
+  border-bottom: 1px solid #3c4248; /* Lighter border for header bottom */
+}
+
+.player-stats-table tbody tr {
+  border-top: 1px solid #2c3136; /* Separator between rows */
+}
+
+.player-stats-table tbody tr:nth-child(even) {
+  background-color: #1a1e20; /* Slightly different background for even rows */
+}
+
+.player-stats-table tbody tr:hover {
+  background-color: #2a3035; /* Hover effect for rows */
+  cursor: pointer;
+}
+
+.player-stats-table td {
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #e6edf3; /* Light text for data cells */
+  white-space: nowrap; /* Prevent data from wrapping */
+}
+
+/* Style for the last column to ensure right border */
+.player-stats-table th:last-child,
+.player-stats-table td:last-child {
+  border-right: none;
+}
+
+/* Data source text */
+.data-source {
+  font-size: 0.75rem;
+  color: #a5aab0;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+/* Message card styles (for no player selected, no data found) */
+.message-card {
+  background: #1f2428;
+  border-radius: 8px;
+  border: 1px solid #2c3136;
+  padding: 1.5rem;
+  text-align: center;
+  color: #a5aab0;
+  margin-top: 2rem; /* Spacing from title */
+}
+
+.message-card p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.message-card.no-player-selected p:first-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00d8ff;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .player-details-container {
+    max-width: 95%; /* Allow it to take more width on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .player-page-outer-container {
+    padding: 10px;
+  }
+  .player-details-container {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  .page-title {
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+  }
+  .player-name-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .player-stats-table {
+    min-width: unset; /* Allow table to shrink on very small screens, rely on overflow-x */
+  }
+  .player-stats-table th,
+  .player-stats-table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.75rem;
+  }
+  .message-card {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+  .message-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-details-container {
+    padding: 0.75rem;
+  }
+  .page-title {
+    font-size: 1rem;
+  }
+  .player-name-heading {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .player-stats-table th,
+  .player-stats-table td {
+    font-size: 0.7rem;
+  }
+}

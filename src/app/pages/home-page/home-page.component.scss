@@ -1,0 +1,120 @@
+/* src/app/pages/home-page/home-page.component.scss */
+.standings-card {
+  background: #14181a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 400px;
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: #00d8ff;
+  }
+
+  /* make the table itself blend with the dark card */
+  table.table {
+    background: #1f2428 !important;
+    border-color: #2c3136 !important;
+  }
+
+  /* table header cells */
+  table.table thead th {
+    background: #21272a !important;
+    color: #a5aab0 !important;
+    border-color: #2c3136 !important;
+  }
+
+  /* table body rows */
+  table.table tbody tr {
+    background: transparent !important;
+  }
+  table.table tbody td {
+    background: transparent !important;
+    color: #fff !important;
+    border-color: #2c3136 !important;
+  }
+
+  /* hover state */
+  table.table tbody tr:hover td {
+    background: #2c3136 !important;
+  }
+}
+
+/* Leaders Panel */
+.leaders-panel {
+  flex: 0 0 350px;
+  background: #14181a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #00d8ff;
+  }
+
+  /* 1) Force the scroller buttons to stay in one row */
+  .scroller {
+    display: flex;
+    flex-wrap: nowrap;   /* ← NO wrapping! */
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    button {
+      padding: 8px 16px;
+      background: #21272a;
+      color: #a5aab0;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+
+      &.active,
+      &:hover {
+        background: #00ffe0;
+        color: #000;
+      }
+    }
+  }
+
+  /* 2) Actually target .leaders-table with a leading dot */
+  table.leaders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1f2428 !important;
+    border-color: #2c3136 !important;
+  }
+
+  /* header cells */
+  table.leaders-table thead th {
+    background: #21272a !important;
+    color: #a5aab0 !important;
+    border-color: #2c3136 !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+
+  /* body cells */
+  table.leaders-table tbody td {
+    background: transparent !important;
+    color: #fff !important;
+    border-color: #2c3136 !important;
+    padding: 10px 14px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* hover state */
+  table.leaders-table tbody tr:hover td {
+    background: #2c3136 !important;
+  }
+}
+
+:host {
+  display: block;
+  padding-top: 57px;  /* if you still need to clear your fixed header */
+}

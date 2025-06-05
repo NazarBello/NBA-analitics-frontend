@@ -1,0 +1,31 @@
+export interface TeamSummary {
+  season: number;
+  abbreviation: string;
+  team: string;
+  playoffs: boolean;
+  w: number;
+  l: number;
+  pw: number;
+  pl: number;
+  mov: number;
+  sos: number;
+  srs: number;
+  ortg: number;
+  drtg: number;
+  nrtg: number;
+  pace: number;
+  ftr: number;
+  x3pAr: number;
+  tsPercent: number;
+  eFgPercent: number;
+  tovPercent: number;
+  orbPercent: number;
+  ftFga: number;
+  oppEFgPercent: number;
+  oppTovPercent: number;
+  oppDrbPercent: number;
+  oppFtFga: number;
+  arena: string;
+  attend: number;
+  attendG: number;
+}

@@ -1,0 +1,21 @@
+<div class="global-search-container">
+  <div class="autocomplete-wrapper">
+    <input
+      type="text"
+      placeholder="Search player name globally..."
+      class="global-player-search-input"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchInputChange($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      aria-label="Global player search"
+    >
+    <ul *ngIf="showSuggestions && suggestions.length > 0" class="suggestions-list">
+      <li *ngFor="let suggestion of suggestions"
+          class="suggestion-item"
+          (mousedown)="selectSuggestion(suggestion)">
+        {{ suggestion }}
+      </li>
+    </ul>
+  </div>
+</div>

@@ -29,6 +29,12 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+
+              {
+                "glob": "**/*",
+                "input": "public/svg",
+                "output": "public/svg"
               }
             ],
             "styles": [
@@ -88,6 +94,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "public/svg",
+                "output": "public/svg"
               }
             ],
             "styles": [
