@@ -1,12 +1,16 @@
 .sidebar-container {
   position: fixed;
   left: 80px;
-  top: 70px;
+  top: 100px;
   bottom: 8px;
   width: 200px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  border-radius: 12px;
+  transition: left 0.3s ease;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .sidebar-panel {
@@ -36,7 +40,6 @@
   }
 }
 
-/* The clickable row */
 .sidebar-toggle {
   display: flex;
   align-items: center;
@@ -46,11 +49,20 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background .2s, color .2s;
+  box-sizing: border-box;
 
   .icon {
     width: 20px;
     height: 20px;
     margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  span {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .chevron {
@@ -58,6 +70,7 @@
     border: 6px solid transparent;
     border-top-color: #a5aab0;
     transition: transform .2s, border-top-color .2s;
+    flex-shrink: 0;
   }
 
   &:hover {
@@ -66,11 +79,12 @@
   }
 }
 
-/* The submenu */
 .sidebar-subnav {
   list-style: none;
-  margin: 4px 0 0 32px;
-  padding: 0;
+  margin: 4px 0 0 0;
+  padding-left: 32px;
+  padding-right: 8px;
+  box-sizing: border-box;
 
   .sidebar-subitem a {
     display: block;
@@ -79,11 +93,39 @@
     text-decoration: none;
     border-radius: 6px;
     transition: background .2s, color .2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:hover,
     &.active {
       background: #1f2428;
       color: #00ffe0;
     }
+  }
+}
+
+@media (max-width: var(--desktop-breakpoint)) {
+  .sidebar-panel {
+    padding: 8px;
+  }
+
+  .sidebar-toggle {
+    padding: 6px;
+  }
+
+  .sidebar-subnav {
+    padding-left: 20px;
+    padding-right: 5px;
+  }
+
+  .sidebar-subitem a {
+    padding: 5px 6px;
+  }
+}
+
+@media (max-width: var(--mobile-breakpoint)) {
+  .sidebar-subnav {
+    padding-left: 15px;
   }
 }

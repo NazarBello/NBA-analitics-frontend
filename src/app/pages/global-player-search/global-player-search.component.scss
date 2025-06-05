@@ -1,23 +1,23 @@
 .global-search-container {
-  padding: 10px 15px; /* Adjust padding as needed for your header */
-  background: #14181a; /* Match your app's header/nav background */
+  padding: 10px 15px;
+  background: #14181a;
   display: flex;
-  justify-content: center; /* Center the search bar horizontally */
+  justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  z-index: 10; /* Ensure it stays above content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .autocomplete-wrapper {
   position: relative;
   width: 100%;
-  max-width: 350px; /* Limit the width of the search input */
+  max-width: 350px;
 }
 
 .global-player-search-input {
   width: 100%;
   padding: 0.5rem 0.8rem;
-  background: #1f2428; /* Darker background for input */
+  background: #1f2428;
   color: #fff;
   border: 1px solid #2c3136;
   border-radius: 8px;
@@ -36,22 +36,22 @@
   box-shadow: 0 0 0 0.15rem rgba(0, 216, 255, 0.25);
 }
 
-/* Suggestions List (from previous component, ensure consistent) */
+
 .suggestions-list {
   position: absolute;
-  top: 100%; /* Position right below the input field */
+  top: 100%;
   left: 0;
   right: 0;
-  background: #1f2428; /* Dark background, matching table body */
-  border: 1px solid #2c3136; /* Border from your tables */
+  background: #1f2428;
+  border: 1px solid #2c3136;
   border-radius: 8px;
   list-style: none;
   padding: 0.5rem 0;
   margin-top: 5px;
-  max-height: 200px; /* Slightly smaller for global search */
+  max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000; /* Ensure it's on top of almost everything */
+  z-index: 1000;
 }
 
 .suggestion-item {

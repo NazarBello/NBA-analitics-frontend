@@ -1,160 +1,158 @@
-/* Host styles for the component, similar to your homepage component */
 :host {
   display: block;
-  /* If you have a fixed header, you might need padding-top here as well */
-  /* padding-top: 57px; */
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Container for the entire glossary page, matching the dark card style */
 .data-glossary-container {
-  background: #14181a; /* Dark background from your standings-card */
-  color: #fff; /* White text for general content */
-  border-radius: 12px; /* Rounded corners from your cards */
-  padding: 1.5rem; /* Slightly increased padding for better spacing */
-  width: 100%; /* Take full width of its parent container */
-  max-width: 900px; /* Adjusted max-width for the glossary content */
-  box-sizing: border-box; /* Include padding in width calculation */
-  /* No specific margin-left here, as the outer div in HTML handles the offset */
-  /* No specific margin-top here, as the outer div in HTML handles the offset */
+  background: #14181a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-/* Page Title, matching h2 in standings-card */
 .glossary-title {
   margin-top: 0;
-  font-size: 1.25rem; /* Matches h2 font-size in standings-card */
-  color: #00d8ff; /* Bright cyan from your standings-card h2 */
-  text-align: left; /* Aligned left */
-  margin-bottom: 1.25rem; /* Adjusted spacing */
-  border-bottom: 1px solid #2c3136; /* Border color from your table borders */
-  padding-bottom: 0.75rem; /* Padding below title text */
-  font-weight: 600; /* Semi-bold */
+  font-size: 1.25rem;
+  color: #00d8ff;
+  text-align: left;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #2c3136;
+  padding-bottom: 0.75rem;
+  font-weight: 600;
 }
 
-/* Search and Filter Section */
 .search-and-filter-section {
   display: flex;
-  gap: 10px; /* Consistent gap */
-  margin-bottom: 1.5rem; /* Spacing below search */
-  justify-content: flex-start; /* Aligned left */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .glossary-search-input {
   flex-grow: 1;
-  max-width: 400px; /* Adjusted max-width for input */
-  padding: 0.6rem 0.8rem; /* Adjusted padding for input */
-  background: #1f2428; /* Darker background for input, matching table body */
-  color: #fff; /* White text for input */
-  border: 1px solid #2c3136; /* Border color from your tables */
-  border-radius: 8px; /* Rounded input fields */
-  font-size: 0.9rem; /* Smaller font size for input */
+  max-width: 400px;
+  padding: 0.6rem 0.8rem;
+  background: #1f2428;
+  color: #fff;
+  border: 1px solid #2c3136;
+  border-radius: 8px;
+  font-size: 0.9rem;
   box-sizing: border-box;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glossary-search-input::placeholder {
-  color: #a5aab0; /* Light grey placeholder color */
+  color: #a5aab0;
 }
 
 .glossary-search-input:focus {
-  border-color: #00d8ff; /* Bright cyan focus border */
+  border-color: #00d8ff;
   outline: 0;
-  box-shadow: 0 0 0 0.15rem rgba(0, 216, 255, 0.25); /* Subtle cyan shadow on focus */
+  box-shadow: 0 0 0 0.15rem rgba(0, 216, 255, 0.25);
 }
 
 .glossary-filter-button {
-  padding: 0.6rem 1rem; /* Adjusted padding for button */
-  background: #21272a; /* Darker background for buttons, matching table header */
-  color: #a5aab0; /* Light grey text for buttons */
+  padding: 0.6rem 1rem;
+  background: #21272a;
+  color: #a5aab0;
   border: none;
-  border-radius: 16px; /* Rounded corners from your scroller buttons */
+  border-radius: 16px;
   cursor: pointer;
-  font-size: 0.9rem; /* Smaller font size for buttons */
+  font-size: 0.9rem;
   font-weight: 500;
   transition: background 0.2s, color 0.2s;
 }
 
 .glossary-filter-button:hover,
-.glossary-filter-button.active { /* Added active state for consistency */
-  background: #00ffe0; /* Bright green/blue on hover/active */
-  color: #000; /* Black text on hover/active */
+.glossary-filter-button.active {
+  background: #00ffe0;
+  color: #000;
 }
 
-/* Glossary List Section */
 .glossary-list-section {
   margin-top: 1.5rem;
 }
 
 .glossary-category {
-  margin-bottom: 2.5rem; /* More space between categories */
+  margin-bottom: 2.5rem;
 }
 
 .category-heading {
-  font-size: 1.1rem; /* Adjusted: Smaller category headings */
-  color: #00d8ff; /* Bright cyan for category headings */
-  margin-bottom: 1rem; /* Space below category letter */
+  font-size: 1.1rem;
+  color: #00d8ff;
+  margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #2c3136; /* Border color from your tables */
-  font-weight: 600; /* Semi-bold */
+  border-bottom: 1px solid #2c3136;
+  font-weight: 600;
 }
 
 .glossary-item {
-  background: #1f2428; /* Darker background for items, matching table body */
-  border: 1px solid #2c3136; /* Border color from your tables */
-  border-radius: 8px; /* Rounded corners for items/cards */
-  padding: 1rem; /* Consistent padding inside items */
-  margin-bottom: 0.75rem; /* Space between items */
-  box-shadow: none; /* No shadow, matching your dark theme cards */
+  background: #1f2428;
+  border: 1px solid #2c3136;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: none;
   transition: background 0.2s ease;
 }
 
 .glossary-item:hover {
-  background: #2c3136; /* Darker background on hover, matching table row hover */
-  transform: none; /* Remove lift on hover, as per your table rows */
+  background: #2c3136;
+  transform: none;
   box-shadow: none;
 }
 
 .item-term {
-  font-size: 1rem; /* Adjusted: Smaller term font */
-  color: #fff; /* White text for terms */
+  font-size: 1rem;
+  color: #fff;
   margin-top: 0;
-  margin-bottom: 0.25rem; /* Less space below term */
-  font-weight: 600; /* Semi-bold for terms */
+  margin-bottom: 0.25rem;
+  font-weight: 600;
 }
 
 .item-definition {
-  font-size: 0.9rem; /* Adjusted: Smaller font size for definition */
-  line-height: 1.4; /* Tighter line height */
-  color: #a5aab0; /* Light grey text for definition, matching secondary text */
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #a5aab0;
   margin-bottom: 0;
 }
 
-/* Back to Top Button, matching scroller buttons */
 .back-to-top {
   display: block;
   width: fit-content;
-  margin: 2.5rem auto 1rem auto; /* Margin for centering */
-  padding: 0.6rem 1.2rem; /* Adjusted padding */
-  background: #21272a; /* Dark background */
-  color: #a5aab0; /* Light grey text */
+  margin: 2.5rem auto 1rem auto;
+  padding: 0.6rem 1.2rem;
+  background: #21272a;
+  color: #a5aab0;
   border: none;
-  border-radius: 16px; /* Rounded corners */
+  border-radius: 16px;
   cursor: pointer;
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 0.9rem;
   font-weight: 500;
   transition: background 0.2s, color 0.2s;
 }
 
 .back-to-top:hover {
-  background: #00ffe0; /* Bright green/blue on hover */
-  color: #000; /* Black text on hover */
+  background: #00ffe0;
+  color: #000;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .data-glossary-container {
     padding: 1rem;
-    margin: 1rem auto; /* Center on smaller screens */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .glossary-title {
@@ -210,7 +208,10 @@
 @media (max-width: 480px) {
   .data-glossary-container {
     padding: 0.75rem;
-    margin: 0.5rem auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .glossary-title {

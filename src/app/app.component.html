@@ -1,13 +1,24 @@
-<app-sidebar
-  *ngIf="showSidebar"
-  class="sidebar-container">
-</app-sidebar>
+<div class="app-container" [class.sidebar-active]="isSidebarOpen">
+  <header class="mobile-header">
+    <button class="menu-button" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i> </button>
+    <div class="app-logo">NBA Analytics</div>
+  </header>
 
-<app-global-player-search
-  *ngIf="showGlobalSearch"
-  class="global-search-container">
-</app-global-player-search>
+  <app-sidebar
+    class="sidebar-container"
+    [class.open]="isSidebarOpen">
+  </app-sidebar>
 
-<main class="main-content">
-  <router-outlet></router-outlet>
-</main>
+  <main class="main-content">
+    <app-global-player-search
+      *ngIf="showGlobalSearch"
+      class="global-search-container"
+      (playerSelected)="handleGlobalPlayerSelection($event)">
+    </app-global-player-search>
+
+    <router-outlet></router-outlet>
+  </main>
+
+  <div class="sidebar-backdrop" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>
+</div>

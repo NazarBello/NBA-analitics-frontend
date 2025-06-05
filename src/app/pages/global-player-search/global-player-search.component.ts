@@ -84,13 +84,12 @@ export class GlobalPlayerSearchComponent implements OnInit, OnDestroy {
     // Emit the selected player name
     this.playerSelected.emit(suggestion);
 
-    // Optionally, navigate directly to the player details page
-    // Note: You might want to URL-encode the player name if it contains special characters
+
     this.router.navigate(['/players', suggestion.replace(/ /g, '-')]); // Example: "LeBron James" -> "LeBron-James"
   }
 
   onBlur(): void {
-    // Small delay to allow click event on suggestion to fire before hiding
+
     setTimeout(() => {
       this.showSuggestions = false;
       this.suggestions = []; // Clear suggestions after blur for a clean state

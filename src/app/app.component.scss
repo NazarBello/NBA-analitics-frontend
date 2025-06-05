@@ -1,0 +1,158 @@
+// src/app/app.component.scss
+
+// Define your global variables. If you have a separate _variables.scss, import it here.
+:root {
+  --sidebar-width: 270px; /* This will be the target width for mobile sidebar */
+  --mobile-header-height: 60px;
+  --search-bar-vertical-spacing: 100px;
+  --desktop-breakpoint: 992px;
+  --tablet-breakpoint: 768px;
+  --mobile-breakpoint: 480px;
+
+  --card-bg: #14181a;
+  --light-color: #FFFFFF;
+  --grey-color: #212121;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--grey-color);
+  flex-direction: row; // Desktop layout
+  position: relative;
+  overflow-x: hidden;
+
+  &.sidebar-active {
+    overflow: hidden; // Prevent scrolling when mobile sidebar is open
+  }
+}
+
+/* app-sidebar Host Styling (minimal, as most is in sidebar.component.scss) */
+app-sidebar {
+  z-index: 1000; /* Stacking context for desktop */
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;
+  transition: padding-left 0.3s ease, padding-top 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Mobile Header (visible only on small screens) */
+.mobile-header {
+  display: none; // Hidden by default on desktop
+  background-color: var(--card-bg);
+  color: var(--light-color);
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001; // Should be above everything else
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Sidebar Backdrop (for mobile overlay sidebar) */
+.sidebar-backdrop {
+  display: none; // Hidden by default on desktop
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998; // Below sidebar, above main content
+  cursor: pointer;
+}
+
+/* Global Search Container Styling */
+.global-search-container {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (min-width: calc(var(--desktop-breakpoint) + 1px)) {
+  .main-content {
+    padding-left: 280px;
+    padding-top: var(--search-bar-vertical-spacing);
+  }
+}
+
+// Mobile-specific styles (for screens up to desktop breakpoint)
+@media (max-width: var(--desktop-breakpoint)) {
+  .app-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
+
+  .main-content {
+    padding-left: 0;
+    padding-top: var(--mobile-header-height);
+    width: 100%;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  /* CRITICAL: Sidebar behavior on mobile (overriding sidebar.component.scss with !important) */
+  app-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: var(--sidebar-width) !important;
+    z-index: 999 !important;
+
+    // Default: Hidden off-screen
+    left: calc(-1 * var(--sidebar-width)) !important;
+
+    // ADD THIS LINE FOR SMOOTH TRANSITION
+    transition: left 0.3s ease-in-out !important; // Ensures smooth sliding animation
+
+    &.open {
+      left: 0 !important; // Slide into view when 'open' class is applied
+    }
+  }
+
+  .sidebar-backdrop {
+    &.ng-star-inserted {
+      display: block;
+    }
+  }
+
+  .global-search-container {
+    padding: 0 15px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: var(--tablet-breakpoint)) {
+  app-sidebar {
+    width: 250px !important;
+    left: -250px !important;
+  }
+}
+
+@media (max-width: var(--mobile-breakpoint)) {
+  app-sidebar {
+    width: 80% !important;
+    left: -80% !important;
+  }
+}

@@ -1,31 +1,21 @@
-<div style="
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    /* Changed: Removed margin-left and used 'auto' for horizontal centering */
-    margin: 70px auto; /* 16px top/bottom margin, auto for left/right centering */
-    /* Add a max-width to this outer container if the content is spreading too wide when centered */
-    max-width: 900px; /* Example: limit the width of the flex container itself */
-  ">
-  <div class="data-glossary-container">
-    <h1 class="glossary-title">Data Glossary</h1>
+<div class="data-glossary-container">
+  <h1 class="glossary-title">Data Glossary</h1>
 
-    <div class="search-and-filter-section">
-      <input type="text" placeholder="Search term..." class="glossary-search-input">
-      <button class="glossary-filter-button">Filter</button>
-    </div>
+  <div class="search-and-filter-section">
+    <input type="text" placeholder="Search term..." class="glossary-search-input">
+    <button class="glossary-filter-button">Filter</button>
+  </div>
 
-    <div class="glossary-list-section">
-      <div *ngFor="let category of groupedGlossaryData" class="glossary-category">
-        <h2 [id]="'category-' + category.letter.toLowerCase()" class="category-heading">{{ category.letter }}</h2>
+  <div class="glossary-list-section">
+    <div *ngFor="let category of groupedGlossaryData" class="glossary-category">
+      <h2 [id]="'category-' + category.letter.toLowerCase()" class="category-heading">{{ category.letter }}</h2>
 
-        <div *ngFor="let item of category.items" class="glossary-item">
-          <h3 class="item-term">{{ item.term }}</h3>
-          <p class="item-definition">{{ item.definition }}</p>
-        </div>
+      <div *ngFor="let item of category.items" class="glossary-item">
+        <h3 class="item-term">{{ item.term }}</h3>
+        <p class="item-definition">{{ item.definition }}</p>
       </div>
     </div>
-
-    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Back to Top</button>
   </div>
+
+  <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Back to Top</button>
 </div>

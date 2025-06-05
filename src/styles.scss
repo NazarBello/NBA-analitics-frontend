@@ -1,28 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "fonts.scss";
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
-:root{
+// Define consistent CSS variables and breakpoints
+:root {
+  // Colors
+  --card-bg: #14181a;
+  --accent-color: #00d8ff;
+  --hover-color: #00ffe0;
   --dark-color: #000000;
   --light-color: #FFFFFF;
-  --primay-color: #333399;
-  --grey-color: 	#212121;
+  --grey-color: #212121;
+  --border-color: #2c3136;
+
+  // Layout/Breakpoint Variables (ensure these match what you use in components)
+  --sidebar-width: 40px;
+  --mobile-header-height: 40px;
+  --search-bar-vertical-spacing: 20px; /* Adjust as needed */
+  --desktop-breakpoint: 992px;
+  --tablet-breakpoint: 768px;
+  --mobile-breakpoint: 480px;
+
+  // Add any other global variables (e.g., font sizes, border-radius)
 }
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif; /* Example: set a default font */
+  background-color: var(--grey-color); /* Ensure the body background is set */
+  color: var(--light-color);
+}
+
+/* General button styles if they apply globally */
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+/* Remove default list styles */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 
 body{
   background-color: var(--grey-color);
   color: var(--light-color);
   font-family: "JetBrains Mono", sans-serif;
-
+  margin: 0; // Ensure no default body margin
+  padding: 0; // Ensure no default body padding
+  overflow-x: hidden; // Prevent horizontal scrollbar on very narrow screens
 }
 
 .h1{
   font-size: 48px;
   line-height: 56px;
   font-weight: 800;
-
 }
 
 .nba-control-label{
@@ -30,7 +70,6 @@ body{
   font-size: 12px;
   line-height: 16px;
   display: block;
-
 }
 
 .nba-input{
@@ -56,5 +95,20 @@ body{
   padding: 12px 20px;
   border-radius: 4px;
   border : 1px solid var(--dark-color);
+}
 
+/* --- Responsive Adjustments for Global Elements --- */
+
+@media (max-width: var(--tablet-breakpoint)) {
+  .nba-input, .btn {
+    width: 90%; /* Make them wider on smaller screens */
+    margin: 0 auto; /* Center them if they don't take full width */
+  }
+}
+
+@media (max-width: var(--mobile-breakpoint)) {
+  .h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
 }

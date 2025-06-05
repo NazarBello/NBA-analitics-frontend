@@ -1,16 +1,9 @@
 <nav class="sidebar-container">
-  <!-- NBA panel -->
   <div class="sidebar-panel">
     <ul class="sidebar-nav">
       <li class="sidebar-item" [class.open]="isNBAOpen">
-
-        <!--
-          Use a div here instead of <a> so clicking
-          doesn’t try to navigate away and we can
-          control expansion with (click)
-        -->
         <div class="sidebar-toggle" (click)="toggleNBA()">
-          <img src="/nba-analitics-frontend/public/svg/nba-logo.svg" alt="NBA" class="icon" />
+          <img src="assets/svg/nba-logo.svg" alt="NBA" class="icon" />
           <span>NBA</span>
           <i class="chevron"></i>
         </div>
@@ -26,24 +19,22 @@
     </ul>
   </div>
 
-  <!-- Data & Glossary panel -->
   <div class="sidebar-panel">
     <ul class="sidebar-nav">
       <li class="sidebar-item">
         <a routerLink="/data" class="sidebar-toggle">
-          <img src="/nba-analitics-frontend/public/svg/briefcase-alt-2-svgrepo-com.svg" class="icon" alt="" />
+          <img src="assets/svg/briefcase-alt-2-svgrepo-com.svg" class="icon" alt="" />
           <span>Data &amp; Glossary</span>
         </a>
       </li>
     </ul>
   </div>
 
-  <!-- About panel -->
   <div class="sidebar-panel">
     <ul class="sidebar-nav">
       <li class="sidebar-item">
         <a routerLink="/about" class="sidebar-toggle">
-          <img src="/nba-analitics-frontend/public/svg/about-svgrepo-com.svg" class="icon" alt="" />
+          <img src="assets/svg/about-svgrepo-com.svg" class="icon" alt="" />
           <span>About</span>
         </a>
       </li>

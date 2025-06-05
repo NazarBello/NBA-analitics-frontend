@@ -1,70 +1,106 @@
-/* src/app/pages/home-page/home-page.component.scss */
+:host {
+  display: block;
+  padding-top: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.home-page-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.common-table-styles {
+  width: 100%;
+  min-width: max-content;
+  border-collapse: collapse;
+  background: #1f2428;
+  border-color: #2c3136;
+
+  thead th {
+    background: #21272a;
+    color: #a5aab0;
+    border-color: #2c3136;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    padding: 10px 14px;
+  }
+
+  tbody td {
+    background: transparent;
+    color: var(--light-color);
+    border-color: #2c3136;
+    padding: 10px 14px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  tbody tr:hover td {
+    background: #2c3136;
+  }
+}
+
 .standings-card {
-  background: #14181a;
-  color: #fff;
+  background: var(--card-bg);
+  color: var(--light-color);
   border-radius: 12px;
   padding: 1rem;
-  width: 100%;
-  max-width: 400px;
+  flex: 1 1 350px;
+  max-width: 450px;
+  box-sizing: border-box;
 
   h2 {
     margin-top: 0;
     font-size: 1.25rem;
-    color: #00d8ff;
+    color: var(--accent-color);
   }
 
-  /* make the table itself blend with the dark card */
+  .table-scroll-wrapper {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
   table.table {
-    background: #1f2428 !important;
-    border-color: #2c3136 !important;
-  }
-
-  /* table header cells */
-  table.table thead th {
-    background: #21272a !important;
-    color: #a5aab0 !important;
-    border-color: #2c3136 !important;
-  }
-
-  /* table body rows */
-  table.table tbody tr {
-    background: transparent !important;
-  }
-  table.table tbody td {
-    background: transparent !important;
-    color: #fff !important;
-    border-color: #2c3136 !important;
-  }
-
-  /* hover state */
-  table.table tbody tr:hover td {
-    background: #2c3136 !important;
+    @extend .common-table-styles;
   }
 }
 
-/* Leaders Panel */
 .leaders-panel {
-  flex: 0 0 350px;
-  background: #14181a;
-  color: #fff;
+  background: var(--card-bg);
+  color: var(--light-color);
   border-radius: 12px;
   padding: 1.25rem;
+  flex: 1 1 500px;
+  max-width: 600px;
+  box-sizing: border-box;
 
   h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #00d8ff;
+    color: var(--accent-color);
   }
 
-  /* 1) Force the scroller buttons to stay in one row */
   .scroller {
     display: flex;
-    flex-wrap: nowrap;   /* ← NO wrapping! */
+    flex-wrap: nowrap;
     overflow-x: auto;
     gap: 8px;
     margin-bottom: 12px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     button {
+      flex-shrink: 0;
       padding: 8px 16px;
       background: #21272a;
       color: #a5aab0;
@@ -81,40 +117,53 @@
     }
   }
 
-  /* 2) Actually target .leaders-table with a leading dot */
+  .table-scroll-wrapper {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
   table.leaders-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #1f2428 !important;
-    border-color: #2c3136 !important;
+    @extend .common-table-styles;
   }
 
-  /* header cells */
-  table.leaders-table thead th {
-    background: #21272a !important;
-    color: #a5aab0 !important;
-    border-color: #2c3136 !important;
-    text-transform: uppercase;
-    font-size: 0.85rem;
+  @media (max-width: var(--desktop-breakpoint)) {
+    .home-page-layout {
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .standings-card,
+    .leaders-panel {
+      width: 100%;
+      max-width: 600px;
+      flex: 0 0 auto;
+      margin-bottom: 20px;
+    }
   }
 
-  /* body cells */
-  table.leaders-table tbody td {
-    background: transparent !important;
-    color: #fff !important;
-    border-color: #2c3136 !important;
-    padding: 10px 14px;
-    line-height: 1.4;
-    white-space: nowrap;
-  }
+  @media (max-width: var(--mobile-breakpoint)) {
+    .home-page-layout {
+      padding: 10px;
+    }
 
-  /* hover state */
-  table.leaders-table tbody tr:hover td {
-    background: #2c3136 !important;
-  }
-}
+    .standings-card,
+    .leaders-panel {
+      margin-bottom: 15px;
+      padding: 1rem;
+    }
 
-:host {
-  display: block;
-  padding-top: 57px;  /* if you still need to clear your fixed header */
+    h2,
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    table.table th,
+    table.leaders-table th,
+    table.table td,
+    table.leaders-table td {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+  }
 }

@@ -1,67 +1,90 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'; // Import OnInit and OnDestroy
+// src/app/app.component.ts
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { filter } from 'rxjs';
+import { filter, fromEvent, Subject } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { GlobalPlayerSearchComponent } from './pages/global-player-search/global-player-search.component';
-import { Subscription } from 'rxjs'; // Import Subscription for ngOnDestroy
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Assuming this is correct from your provided file
+  standalone: true,
   imports: [RouterOutlet, SidebarComponent, NgIf, GlobalPlayerSearchComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, OnDestroy { // Implement OnInit and OnDestroy
+export class AppComponent implements OnInit, OnDestroy {
   title = 'nba-analitics-frontend';
 
-  showSidebar = true;
-  showGlobalSearch = true;
+  showSidebar: boolean = true; // Still used for login page visibility if desired
+  showGlobalSearch: boolean = true;
 
-  private routerSubscription!: Subscription; // Declare a subscription to manage cleanup
+  isSidebarOpen: boolean = false; // Controls the mobile sidebar's 'open' class for sliding
 
-  constructor(private router: Router) { } // Constructor remains clean, subscriptions in ngOnInit
+  private destroy$ = new Subject<void>();
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    // Subscribe to router events when the component initializes
-    this.routerSubscription = this.router.events
-      .pipe(filter(e => e instanceof NavigationEnd))
+    this.router.events
+      .pipe(
+        filter(e => e instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
       .subscribe((e: NavigationEnd) => {
         const url = e.urlAfterRedirects;
         const isLoginPage = url.startsWith('/login');
 
-        this.showSidebar = !isLoginPage;
+        this.showSidebar = !isLoginPage; // If not login, sidebar component exists
         this.showGlobalSearch = !isLoginPage;
 
-        // --- DEBUGGING LOGS (keep these temporarily) ---
-        console.log('--- App Component Debugging (Router Event) ---');
-        console.log('Current URL (urlAfterRedirects):', url);
-        console.log('Is login page:', isLoginPage);
-        console.log('showSidebar:', this.showSidebar);
-        console.log('showGlobalSearch:', this.showGlobalSearch);
-        console.log('-------------------------------------------');
-        // --- END DEBUGGING LOGS ---
+        if (!isLoginPage && this.isSidebarOpen) {
+          this.isSidebarOpen = false;
+          document.body.style.overflow = '';
+        }
       });
+
+    fromEvent(window, 'resize')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.onWindowResize());
+
+    this.onWindowResize(); // Initial check
   }
 
   ngOnDestroy(): void {
-    // Unsubscribe to prevent memory leaks when the component is destroyed
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    if (this.isSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      const currentUrl = this.router.url;
+      const isLoginPage = currentUrl.startsWith('/login');
+      if (!isLoginPage) {
+        document.body.style.overflow = '';
+      }
     }
   }
 
+  private onWindowResize(): void {
+    const desktopBreakpoint = 992;
+    const isDesktop = window.innerWidth > desktopBreakpoint;
+
+    // This handles closing the mobile sidebar if resizing to desktop
+    if (isDesktop && this.isSidebarOpen) {
+      this.isSidebarOpen = false;
+      document.body.style.overflow = '';
+    }
+    // No longer trying to set showSidebar for responsive display here.
+  }
 
   handleGlobalPlayerSelection(playerName: string): void {
-    // --- ADD THIS CONSOLE.LOG ---
     console.log('AppComponent: Received playerSelected event. Navigating to:', playerName);
-    // --- END CONSOLE.LOG ---
-
-    // It's important to encode the player name for the URL, especially for names with spaces or special characters
-    // Replace spaces with hyphens for cleaner URLs, then encode the whole string
     const encodedPlayerName = encodeURIComponent(playerName.replace(/ /g, '-'));
-
     this.router.navigate(['/players', encodedPlayerName]);
     console.log(`AppComponent: Attempting to navigate to /players/${encodedPlayerName}`);
   }

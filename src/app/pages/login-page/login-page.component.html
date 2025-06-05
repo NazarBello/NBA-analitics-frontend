@@ -2,31 +2,29 @@
   class="login-form"
   [formGroup]="form"
   (ngSubmit)="onSubmit()" >
-<h1 class="h1 mb-lg-5">Sign in</h1>
+  <h1 class="h1 mb-lg-5">Sign in</h1>
 
-<label class="nba-control-label mb-3">
-  Username
-  <!-- ⚠️ formControlName должен быть у input -->
-  <input
-    formControlName="username"
-    class="nba-input"
-    type="text"
-    placeholder="Enter your username"
-  />
-</label>
+  <label class="nba-control-label mb-3">
+    Username
+    <input
+      formControlName="username"
+      class="nba-input"
+      type="text"
+      placeholder="Enter your username"
+    />
+  </label>
 
-<label class="nba-control-label mb-4">
-  Password
-  <input
-    formControlName="password"
-    class="nba-input"
-    type="password"
-    placeholder="Enter your password"
-  />
-</label>
+  <label class="nba-control-label mb-4">
+    Password
+    <input
+      formControlName="password"
+      class="nba-input"
+      type="password"
+      placeholder="Enter your password"
+    />
+  </label>
 
-<button class="btn" type="submit">Sign in</button>
+  <button class="btn" type="submit">Sign in</button>
 </form>
 
-<!-- уберите ведущий слеш, чтобы работало и в prod -->
-<img src="/assets/svg/nba-logo.svg" >
+<img src="assets/svg/nba-logo.svg" >
